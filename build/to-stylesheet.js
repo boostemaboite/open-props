@@ -1,40 +1,54 @@
-import fs from 'fs'
+import fs from "fs";
 
-export const buildPropsStylesheet = ({filename,props}, {selector,prefix}) => {
-  const file = fs.createWriteStream("../src/" + filename)
+export const buildPropsStylesheet = (
+  { filename, props },
+  { selector, prefix }
+) => {
+  const file = fs.createWriteStream("../src/" + filename);
 
-  let appendedMeta = ''
+  let appendedMeta = "";
 
-  if (filename.includes('shadows'))
-    file.write(`@import 'props.media.css';\n\n`)
+  if (filename.includes("shadows"))
+    file.write(`@import 'props.media.css';\n\n`);
 
-  file.write(`${selector} {\n`)
+  file.write(`${selector} {\n`);
 
   Object.entries(props).forEach(([prop, val]) => {
-    if (prop.includes('-@'))
-      return
+    if (prop.includes("-@")) return;
 
-    if (prefix && prefix !== "''")
-      prop = `--${prefix}-` + prop.slice(2)
-    
-    if (prop.includes('animation')) {
-      let keyframes = props[`${prop}-@`]
-      appendedMeta += keyframes
+    if (prop.includes("animation")) {
+      let keyframes = props[`${prop}-@`];
+      appendedMeta += keyframes;
     }
 
-    file.write(`  ${prop}: ${val};\n`)
-  })
+    if (prefix && prefix !== "''") {
+      prop = `--${prefix}-` + prop.slice(2);      
+      if (typeof val == "string" && val.includes("var(--")) {
+        val = val.replace(/var\(--/g, `var(--${prefix}-`);
+      }
+    }
 
-  if (filename.includes('shadows')) {
-    appendedMeta += `
-@media (--OSdark) {
+    file.write(`  ${prop}: ${val};\n`);
+  });
+
+  if (filename.includes("shadows")) {
+    if (prefix && prefix !== "''") {
+      appendedMeta += `@media (--${prefix}-OSdark) {
+  :where(html) {
+    --${prefix}-shadow-strength: 25%;
+    --${prefix}-shadow-color: 220 40% 2%;
+  }
+}`;
+    } else {
+      appendedMeta += `@media (--OSdark) {
   :where(html) {
     --shadow-strength: 25%;
     --shadow-color: 220 40% 2%;
   }
-}`
+}`;
+    }
   }
 
-  file.write('}\n')
-  file.end(appendedMeta)
-}
+  file.write("}\n");
+  file.end(appendedMeta);
+};

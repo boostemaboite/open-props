@@ -1,24 +1,24 @@
-:where(html) {
-  --animation-fade-in: fade-in .5s var(--ease-3);
-  --animation-fade-out: fade-out .5s var(--ease-3);
-  --animation-scale-up: scale-up .5s var(--ease-3);
-  --animation-scale-down: scale-down .5s var(--ease-3);
-  --animation-slide-out-up: slide-out-up .5s var(--ease-3);
-  --animation-slide-out-down: slide-out-down .5s var(--ease-3);
-  --animation-slide-out-right: slide-out-right .5s var(--ease-3);
-  --animation-slide-out-left: slide-out-left .5s var(--ease-3);
-  --animation-slide-in-up: slide-in-up .5s var(--ease-3);
-  --animation-slide-in-down: slide-in-down .5s var(--ease-3);
-  --animation-slide-in-right: slide-in-right .5s var(--ease-3);
-  --animation-slide-in-left: slide-in-left .5s var(--ease-3);
-  --animation-shake-x: shake-x .75s var(--ease-out-5);
-  --animation-shake-y: shake-y .75s var(--ease-out-5);
-  --animation-spin: spin 2s linear infinite;
-  --animation-ping: ping 5s var(--ease-out-3) infinite;
-  --animation-blink: blink 1s var(--ease-out-3) infinite;
-  --animation-float: float 3s var(--ease-in-out-3) infinite;
-  --animation-bounce: bounce 2s var(--ease-squish-2) infinite;
-  --animation-pulse: pulse 2s var(--ease-out-3) infinite;
+html {
+  --o-animation-fade-in: fade-in .5s var(--o-ease-3);
+  --o-animation-fade-out: fade-out .5s var(--o-ease-3);
+  --o-animation-scale-up: scale-up .5s var(--o-ease-3);
+  --o-animation-scale-down: scale-down .5s var(--o-ease-3);
+  --o-animation-slide-out-up: slide-out-up .5s var(--o-ease-3);
+  --o-animation-slide-out-down: slide-out-down .5s var(--o-ease-3);
+  --o-animation-slide-out-right: slide-out-right .5s var(--o-ease-3);
+  --o-animation-slide-out-left: slide-out-left .5s var(--o-ease-3);
+  --o-animation-slide-in-up: slide-in-up .5s var(--o-ease-3);
+  --o-animation-slide-in-down: slide-in-down .5s var(--o-ease-3);
+  --o-animation-slide-in-right: slide-in-right .5s var(--o-ease-3);
+  --o-animation-slide-in-left: slide-in-left .5s var(--o-ease-3);
+  --o-animation-shake-x: shake-x .75s var(--o-ease-out-5);
+  --o-animation-shake-y: shake-y .75s var(--o-ease-out-5);
+  --o-animation-spin: spin 2s linear infinite;
+  --o-animation-ping: ping 5s var(--o-ease-out-3) infinite;
+  --o-animation-blink: blink 1s var(--o-ease-out-3) infinite;
+  --o-animation-float: float 3s var(--o-ease-in-out-3) infinite;
+  --o-animation-bounce: bounce 2s var(--o-ease-squish-2) infinite;
+  --o-animation-pulse: pulse 2s var(--o-ease-out-3) infinite;
 }
 
 @keyframes fade-in {
